@@ -1,0 +1,66 @@
+//-/////////////////////////////////////////////////////////////////////////////
+//-                                                                           //
+//-              This file is part of the Buildbotics firmware.               //
+//-                                                                           //
+//-                Copyright (c) 2015 - 2018, Buildbotics LLC                 //
+//-                           All rights reserved.                            //
+//-                                                                           //
+//-   This file ("the software") is free software: you can redistribute it    //
+//-   and/or modify it under the terms of the GNU General Public License,     //
+//-    version 2 as published by the Free Software Foundation. You should     //
+//-    have received a copy of the GNU General Public License, version 2      //
+//-   along with the software. If not, see <http://www.gnu.org/licenses/>.    //
+//-                                                                           //
+//-   The software is distributed in the hope that it will be useful, but     //
+//-        WITHOUT ANY WARRANTY; without even the implied warranty of         //
+//-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU      //
+//-             Lesser General Public License for more details.               //
+//-                                                                           //
+//-     You should have received a copy of the GNU Lesser General Public      //
+//-              License along with the software.  If not, see                //
+//-                     <http://www.gnu.org/licenses/>.                       //
+//-                                                                           //
+//-              For information regarding this software email:               //
+//-                "Joseph Coffland" <joseph@buildbotics.com>                 //
+//-                                                                           //
+//-/////////////////////////////////////////////////////////////////////////////
+
+script#view-files-template(type="text/x-template")
+  div
+    nav.navbar
+      nav-item
+        | File
+        .fa.fa-caret-down
+        nav-menu
+          nav-item(@click="upload")
+            .fa.fa-upload
+            span Upload File
+
+          nav-item(@click="new_folder")
+            .fa.fa-plus
+            span New Folder
+
+      nav-item
+        | Selection
+        .fa.fa-caret-down
+        nav-menu
+          nav-item(@click="edit", :disabled="!selected || is_dir")
+            .fa.fa-pencil
+            span Edit
+
+          nav-item(@click="view", :disabled="!selected || is_dir")
+            .fa.fa-eye
+            span View
+
+          nav-item(@click="download", :disabled="!selected || is_dir")
+            .fa.fa-download
+            span Download
+
+          nav-item(@click="delete", :disabled="!selected")
+            .fa.fa-trash
+            span Delete
+
+    a(v-el:download, :href="'/api/fs/' + selected", style="display:none",
+      download, target="_blank")
+    files(v-ref:files, @selected="set_selected", @activate="download",
+      :locations="state.locations")

@@ -2,6 +2,14 @@ Buildbotics CNC Controller Firmware Changelog
 =============================================
 
 ## v0.4.14
+ - Added online GCode editor.
+ - Added online file dialog.
+ - Allow subdirectories of files.
+ - Full page 3D viewer.
+ - Full page camera view.
+ - Move all configuration pages to ``SETTINGS``.
+ - Moved ``Save`` button to ``SETTINGS`` pages.
+ - Added firmware check message.
 
 ## v0.4.13
  - Support for OMRON MX2 VFD.

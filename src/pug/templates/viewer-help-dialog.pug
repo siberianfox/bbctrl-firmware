@@ -1,0 +1,65 @@
+//-/////////////////////////////////////////////////////////////////////////////
+//-                                                                           //
+//-              This file is part of the Buildbotics firmware.               //
+//-                                                                           //
+//-                Copyright (c) 2015 - 2018, Buildbotics LLC                 //
+//-                           All rights reserved.                            //
+//-                                                                           //
+//-   This file ("the software") is free software: you can redistribute it    //
+//-   and/or modify it under the terms of the GNU General Public License,     //
+//-    version 2 as published by the Free Software Foundation. You should     //
+//-    have received a copy of the GNU General Public License, version 2      //
+//-   along with the software. If not, see <http://www.gnu.org/licenses/>.    //
+//-                                                                           //
+//-   The software is distributed in the hope that it will be useful, but     //
+//-        WITHOUT ANY WARRANTY; without even the implied warranty of         //
+//-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU      //
+//-             Lesser General Public License for more details.               //
+//-                                                                           //
+//-     You should have received a copy of the GNU Lesser General Public      //
+//-              License along with the software.  If not, see                //
+//-                     <http://www.gnu.org/licenses/>.                       //
+//-                                                                           //
+//-              For information regarding this software email:               //
+//-                "Joseph Coffland" <joseph@buildbotics.com>                 //
+//-                                                                           //
+//-/////////////////////////////////////////////////////////////////////////////
+
+script#viewer-help-dialog-template(type="text/x-template")
+  .viewer-help-dialog
+    message(:show.sync="show")
+      h3(slot="header") 3D Viewer Help
+
+      div(slot="body")
+        h2 Mouse Controls
+        table
+          tr
+            th Left Mouse
+            td Hold and drag to rotate
+          tr
+            th Middle Mouse
+            td Hold and drag to zoom
+          tr
+            th Right Mouse
+            td Hold and drag to pan
+          tr
+            th Mouse Wheel
+            td Zoom in and out
+
+        h2 Dimensions
+        p.
+          Dimensions are displayed in the currently selected units which
+          can be changed on the #[a(href="#settings:general") SETTINGS page].
+
+        h2 Grid
+        p.
+          The grid lies along on the X/Y plane.  The spacing is 10mm when
+          metric units are selected and 1in for imperial units.
+
+        h2 LASER Raster
+        p.
+          When enabled, the #[em LASER Raster] setting colors #[tt G0] moves
+          according to the current GCode #[tt S] value or speed setting.  Many
+          LASERS use #[tt S] to set LASER intensity.  This allows you to
+          visualize what a LASER rastering program will burn onto the
+          workpiece.
